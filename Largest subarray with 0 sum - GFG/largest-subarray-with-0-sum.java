@@ -38,13 +38,9 @@ class GfG
         hm.put(0,-1);
         for(int i=0;i<n;i++){
             sum+=arr[i];
-            if(sum==0)
-            {
-                ans=i+1;
-            }
             if(hm.containsKey(sum)){
-                int maxlen=i-hm.get(sum);
-                ans=Math.max(ans,maxlen);
+                 int len=i-hm.get(sum);
+                 ans=Math.max(ans,len);
             }
             else{ hm.put(sum,i);
         }
