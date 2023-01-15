@@ -57,8 +57,18 @@ class GfG {
     public Queue<Integer> modifyQueue(Queue<Integer> q, int k) {
         // add code here.
         
-        
-		ArrayList<Integer>ar=new ArrayList<>();
+        Stack<Integer>st=new Stack<>();
+        for(int i=0;i<k;i++){
+            st.push(q.remove());
+        }
+        while(st.size()>0){
+            q.add(st.pop());
+        }
+        int s=q.size()-k;
+        for(int i=0;i<s;i++){
+            q.add(q.remove());
+        }
+	/*	ArrayList<Integer>ar=new ArrayList<>();
 		Queue<Integer>m=new LinkedList<>();
 		int c=0;
 			while(c<k){
@@ -72,6 +82,6 @@ class GfG {
 				m.add(q.remove());
 			}
     return m;
-        
-    }
+    */    
+    return q;}
 }
