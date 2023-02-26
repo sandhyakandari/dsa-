@@ -1,0 +1,12 @@
+
+class Tree {
+    // Function to find the minimum element in the given BST.
+    int minValue(Node node) {
+      int ans=-1;
+      while(node!=null){
+            ans= node.data;
+           node= node.left;
+           
+    }
+    return ans;
+}}
