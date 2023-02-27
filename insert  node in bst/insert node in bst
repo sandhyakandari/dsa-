@@ -1,0 +1,14 @@
+
+class Solution{
+    public Node insertNode(Node root, int val){
+        // WRITE YOUR CODE HERE
+    if(root==null){
+		Node ne=new Node(val);
+		return ne;
+	}
+		if(root.val<val){ 
+			root.right=insertNode(root.right,val);
+		}
+		else if(root.val>val){ root.left=insertNode(root.left,val);}
+else{ }	return root;}
+}
