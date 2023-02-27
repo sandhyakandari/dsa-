@@ -1,0 +1,36 @@
+public static int size(Node node) {
+    // write your code here
+ if(node==null){
+	 return 0;
+ }
+  return 1+size(node.left)+size(node.right); }
+
+  public static int sum(Node node) {
+    // write your code here
+	  if(node==null){ return 0;}
+	  return sum(node.left)+sum(node.right)+node.data;
+  }
+
+  public static int max(Node node) {
+    // write your code here
+	  
+	  int ma=0;while(node!=null){
+	   ma=node.data;node=node.right;
+	  } return ma;
+  }
+  public static int min(Node node) {
+    // write your code here
+	  int min=0;
+	  while(node!=null){
+		  min=node.data; 
+		  node=node.left;
+	  }
+  return min;}
+
+  public static boolean find(Node node, int data){
+    // write your code here
+	  if(node==null){ return false;}
+	  if(data==node.data){ return true;}
+	  else if(data>node.data){ return find(node.right,data); }
+	  else{ return find(node.left,data);}
+  }
