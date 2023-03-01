@@ -1,0 +1,9 @@
+  import java.util.*;
+
+class Solution {
+   public int setKBit(int n, int k) {
+        // write code here
+		int m=1<<k;
+		return n|m;
+		
+    }}
