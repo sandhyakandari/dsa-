@@ -1,0 +1,12 @@
+import java.util.*;
+
+class Solution {
+    public void singleElement(int[]A,int n) {
+        //Write code here and print output
+       int r = 0;
+		for(int num:A){
+			r ^= num;
+		}
+		System.out.println(r);
+	}  
+    }
