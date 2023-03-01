@@ -1,0 +1,17 @@
+
+class Solution
+{  public static void ans(Node root,int low,int high,ArrayList<Integer>an){
+  if(root==null){ return;
+    }
+     ans(root.left,low,high,an);
+     if(root.data>=low && root.data<=high){ 
+         an.add(root.data);}
+         ans(root.right,low,high,an);
+}
+    //Function to return a list of BST elements in a given range.
+	public static ArrayList<Integer> printNearNodes(Node root,int low,int high) {
+        // code here.
+    ArrayList<Integer>an=new ArrayList<>();          
+        ans(root,low,high,an);
+        return an;
+}}
