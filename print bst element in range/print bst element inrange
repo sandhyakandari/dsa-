@@ -15,3 +15,25 @@ class Solution
         ans(root,low,high,an);
         return an;
 }}
+
+// second 
+
+public static void pri(Node root,int low,int high,ArrayList<Integer>an){
+    if(root==null){ return ;}
+    if(low<root.data && high<root.data ){
+        pri(root.left,low,high,an);
+    }
+    else if(low>root.data && high >root.data){
+        pri(root.right,low,high,an);
+    }
+    else{ pri(root.left,low,high,an);
+    an.add(root.data);
+    pri(root.right,low,high,an);}
+}
+    //Function to return a list of BST elements in a given range.
+	public static ArrayList<Integer> printNearNodes(Node root,int low,int high) {
+        // code here.
+    ArrayList<Integer>an=new ArrayList<>();          
+        pri(root,low,high,an);
+        return an;
+}}
