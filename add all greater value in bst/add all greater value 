@@ -1,0 +1,17 @@
+class Solution{
+     int sum=0;
+    // modify the BST and return its root
+    public Node modify(Node root)
+{met(root);
+return root;}
+
+
+    void met(Node root){
+    if(root==null){ return ;}
+       met(root.right);
+      sum+=root.data;
+       root.data=sum;
+       met(root.left);
+    }
+    
+}
