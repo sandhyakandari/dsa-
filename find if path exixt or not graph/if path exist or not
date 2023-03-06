@@ -1,0 +1,25 @@
+lass Solution {
+    public boolean validPath(int n, int[][] ed, int src, int des) {
+        boolean vis[]=new boolean[n];
+        ArrayList<ArrayList<Integer>>an=new ArrayList<>();
+        for(int i=0;i<n;i++){
+           an.add(new ArrayList<>());}
+          for(int a[]:ed){
+            an.get(a[0]).add(a[1]);
+            an.get(a[1]).add(a[0]);}
+        boolean p=path(an,src,des,vis);
+        return p;
+    }
+    public boolean path(ArrayList<ArrayList<Integer>>an,int s,int d,boolean []vis){
+        if(s==d){ return true;}
+        vis[s]=true;
+        for(int nbr: an.get(s)){
+		 if(vis[nbr]==false){
+            boolean ha=path(an,nbr,d,vis);
+            if(ha==true){
+                return true;
+            }
+         }
+    }
+    return false;
+}}
