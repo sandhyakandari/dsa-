@@ -1,0 +1,12 @@
+
+class Solution { int sum=0;
+    public TreeNode convertBST(TreeNode root) {
+        //Write code here
+		if(root==null){ return null;}
+		convertBST(root.right);
+		sum=root.val+sum;
+		root.val=sum;
+		convertBST(root.left);
+		return root;
+    }
+}
