@@ -5,6 +5,8 @@ class Tree {
             return max(root.right);
         }
         else { return root.data;}}
+
+        
     public static Node deleteNode(Node root, int X) {
         // code here.
         if(root==null){ return null;

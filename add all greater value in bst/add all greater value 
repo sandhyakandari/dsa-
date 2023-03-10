@@ -15,3 +15,21 @@ return root;}
     }
     
 }
+
+2nd -
+
+class Solution{
+     int sum=0;
+    // modify the BST and return its root
+    public Node modify(Node root)
+    {
+        //Write your code here
+        if(root==null){ return null;}
+        modify(root.right);
+        sum=root.data+sum;
+        root.data=sum;
+        modify(root.left);
+        return root;
+    }
+    
+}
