@@ -1,0 +1,56 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    class pair{
+        TreeNode node; int state;
+        pair(TreeNode node,int state){
+            this.node=node;
+            this.state=state;
+        }
+    }
+    public TreeNode getin(Stack<pair>st){
+        while(st.size()>0){
+            pair n=st.peek();
+            if(n.state==1){
+                n.state++;
+                if(n.node.left!=null){ st.push(new pair(n.node.left,1));    }
+            }
+            else if(n.state==2){
+                n.state++;
+                if(n.node.right!=null){ st.push(new pair(n.node.right,1));}
+            return n.node;}
+            else{ st.pop();}
+        }
+        return null;
+    }
+    public void recoverTree(TreeNode root) {
+        Stack<pair>st=new Stack<>();
+        st.push(new pair(root,1));
+        TreeNode a=null;
+        TreeNode b=null;
+        TreeNode prev=null;
+        TreeNode cur=getin(st);
+        while(cur!=null){
+            if(prev!=null && prev.val>cur.val){
+                if(a==null){ a=prev; b=cur;}
+                else{ b=cur;}
+            } 
+            prev=cur;
+            cur=getin(st);   }       
+    int tval=a.val;
+    a.val=b.val;
+    b.val=tval;}
+}
