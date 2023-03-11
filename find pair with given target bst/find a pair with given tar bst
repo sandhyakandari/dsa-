@@ -1,0 +1,61 @@
+
+class Solution
+{  
+    class pair{
+   Node node; int state;
+   pair(Node node,int state){
+       this.node=node; this.state=state;
+   }}
+   public Node getrev(Stack<pair>st){
+       while(st.size()>0){
+           pair re=st.peek();
+           if(re.state==1){
+               re.state++;
+           if(re.node.right!=null){
+        st.push(new pair(re.node.right,1));           }}
+           else if(re.state==2){
+               re.state++;
+                if(re.node.left!=null){ st.push(new pair(re.node.left,1));}
+                 return re.node;
+           }
+       else { st.pop();}} return null;}
+        
+        
+        public Node getnorm(Stack<pair>st){
+          while(st.size()>0){ pair re=st.peek();
+           if(re.state==1){
+               re.state++;
+           if(re.node.left!=null){
+               st.push(new pair(re.node.left,1));
+           }}
+           else if(re.state==2){
+               re.state++;
+               if(re.node.right!=null){ st.push(new pair(re.node.right,1));
+          // System.out.print(n.data); 
+          }
+          return re.node;}
+       else { st.pop();}} return null;}
+    // root : the root Node of the given BST
+    // target : the target sum
+    public int isPairPresent(Node root, int target)
+    { int ans=0;
+        // Write your code here
+        Stack<pair>nor=new Stack<>();
+        Stack<pair>rev=new Stack<>();
+       nor.push(new pair(root,1));
+         rev.push(new pair(root,1));
+        Node left=getnorm(nor);
+        Node right=getrev(rev);
+        while(left.data<right.data){
+            if(left.data+right.data==target){
+                ans=1;
+             break;}
+             else if(left.data+right.data>target){
+                 right=getrev(rev);
+             }
+             else{ left=getnorm(nor);
+        }}
+        return ans;
+        
+    }
+}
