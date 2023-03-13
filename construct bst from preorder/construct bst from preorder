@@ -1,0 +1,19 @@
+class Solution {
+  public static int idx;
+    public static TreeNode cons(int []pre,int min,int max){
+   if(idx==pre.length){ return null;}
+   if(pre[idx]<=min || pre[idx]>=max){
+       return null;  }
+    
+    TreeNode ne=new TreeNode(pre[idx]);
+  idx++;
+      ne.left=cons(pre,min,ne.val);
+    ne.right=cons(pre,ne.val,max);
+    return ne;
+    }
+    public TreeNode bstFromPreorder(int[] preorder) {
+     if(preorder==null){ return null;}
+       idx=0;
+        TreeNode n=cons(preorder,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    return n;}
+}
