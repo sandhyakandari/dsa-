@@ -1,0 +1,31 @@
+
+class Solution {
+	class pair{
+		int max; int min; Node n;
+		pair(Node n,int min,int max){
+			this.n=n;
+			this.max=max;
+			this.min=min;	}	}
+ static int idx;
+    Node bstFromLevel(int arr[], int n) {
+        // write code here
+		Queue<pair>q=new LinkedList<>();
+		Node root=new Node(arr[0]);
+		q.add(new pair(root,Integer.MIN_VALUE,arr[0]));
+		q.add(new pair(root,arr[0],Integer.MAX_VALUE));
+		idx=1;
+		while(q.size()>0){
+			pair fr=q.remove();
+			if(idx==arr.length){ continue;}
+			if(arr[idx]<=fr.min || arr[idx]>=fr.max){
+				continue;
+			}
+			Node ne=new Node(arr[idx]);
+			idx++;
+			if(ne.data<fr.n.data){ fr.n.left=ne;}
+			else { fr.n.right=ne;}
+			q.add(new pair(ne,fr.min,ne.data));
+			q.add(new pair(ne,ne.data,fr.max));
+		}
+    return root;}
+}
