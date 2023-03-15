@@ -100,62 +100,75 @@ class GFG
 //User function Template for Java
 
 class Solution
-{  
+{ 
     class pair{
-   Node node; int state;
-   pair(Node node,int state){
-       this.node=node; this.state=state;
-   }}
-   public Node getrev(Stack<pair>st){
-       while(st.size()>0){
-           pair re=st.peek();
-           if(re.state==1){
-               re.state++;
-           if(re.node.right!=null){
-        st.push(new pair(re.node.right,1));           }}
-           else if(re.state==2){
-               re.state++;
-                if(re.node.left!=null){ st.push(new pair(re.node.left,1));}
-                 return re.node;
-           }
-       else { st.pop();}} return null;}
-        
-        
-        public Node getnorm(Stack<pair>st){
-          while(st.size()>0){ pair re=st.peek();
-           if(re.state==1){
-               re.state++;
-           if(re.node.left!=null){
-               st.push(new pair(re.node.left,1));
-           }}
-           else if(re.state==2){
-               re.state++;
-               if(re.node.right!=null){ st.push(new pair(re.node.right,1));
-          // System.out.print(n.data); 
-          }
-          return re.node;}
-       else { st.pop();}} return null;}
+        Node root;
+        int state;
+        pair(Node root,int state){
+            this.root=root;
+            this.state=state;
+        }
+    }
     // root : the root Node of the given BST
     // target : the target sum
-    public int isPairPresent(Node root, int target)
-    { int ans=0;
+  public Node getleft(Stack<pair>st){
+      while(st.size()>0){
+          pair r=st.peek();
+          if(r.state==1){
+              r.state++;
+              if(r.root.left!=null){
+                  st.push(new pair(r.root.left,1));
+              }
+          }
+          else if(r.state==2){
+              r.state++;
+              if(r.root.right!=null){ st.push(new pair(r.root.right,1));} return r.root;
+      }
+    else{ st.pop();
+           
+      }}
+      return null;
+  }
+  public Node getri(Stack<pair>st){
+      while(st.size()>0){
+          pair r=st.peek();
+          if(r.state==1){
+              r.state++;
+              if(r.root.right!=null){
+                  st.push(new pair(r.root.right,1));
+              }
+          }
+          else if(r.state==2){
+              r.state++;
+              if(r.root.left!=null){ st.push(new pair(r.root.left,1));} return r.root;
+      }
+    else{ st.pop(); 
+      }}
+      return null;  }
+      public int isPairPresent(Node root, int target)
+    {
         // Write your code here
-        Stack<pair>nor=new Stack<>();
-        Stack<pair>rev=new Stack<>();
-       nor.push(new pair(root,1));
-         rev.push(new pair(root,1));
-        Node left=getnorm(nor);
-        Node right=getrev(rev);
-        while(left.data<right.data){
-            if(left.data+right.data==target){
-                ans=1;
-             break;}
-             else if(left.data+right.data>target){
-                 right=getrev(rev);
-             }
-             else{ left=getnorm(nor);
-        }}
-        return ans;
         
+        Stack<pair>le=new Stack<>();
+        
+        Stack<pair>ri=new Stack<>();
+        le.push(new pair(root,1));
+        ri.push(new pair(root,1));
+        
+        Node s=getleft(le);
+        int ans=0;
+        Node e=getri(ri);
+        while(s.data<e.data){
+            if(s.data+e.data==target){
+                ans=1;
+                break;
+            }
+            else if(s.data+e.data>target){
+                 e=getri(ri);
+            }
+            else{ s=getleft(le);
+        }
     }
+    return ans;
+}
 }
