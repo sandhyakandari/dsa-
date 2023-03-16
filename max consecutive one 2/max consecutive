@@ -1,0 +1,13 @@
+   static int maxOne(int arr[], int n,int k)
+    {
+        //Write your code here
+		int i=0; int j=0;
+		int numz=0; int ans=0;
+		while(i<n){
+			if(arr[i]==0){ numz++;}
+			while(numz>k){ if(arr[j]==0){ numz--;}
+						 j++;}
+ans=Math.max(ans,i-j+1);
+			 i++;
+		}
+		return ans;
