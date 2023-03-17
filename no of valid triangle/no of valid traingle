@@ -1,0 +1,21 @@
+ public static int ValidTriangles(int n,int[] arr){
+        //write code here
+		int ans=0; Arrays.sort(arr);
+   int i=n-1;
+		while(i>=2){
+			int l=0;
+			int h=i-1;
+			while(l<h){
+				if(arr[l]+arr[h]>arr[i]){
+					
+					int a=h-l;
+//System.out.print(a);
+					ans=ans+a;
+					h--;
+				}
+				else{ l++;}
+			}
+			i--;
+		} return ans;
+		
+    }
