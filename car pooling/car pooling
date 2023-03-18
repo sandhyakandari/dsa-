@@ -1,0 +1,19 @@
+class Solution {
+    public boolean carPooling(int[][] trips, int capacity) {
+        int ar[]=new int[1002];
+        for(int i=0;i<trips.length;i++){
+            int st=trips[i][1];
+            int end=trips[i][2];
+            int p=trips[i][0];
+            ar[st]=p+ar[st]; // previous mistake did'nt add ar[st]with p; 
+            ar[end]=ar[end]-p;
+        }
+        for(int i=1;i<ar.length;i++){
+            ar[i]=ar[i]+ar[i-1];
+        }
+        for(int i=0;i<ar.length;i++){
+            if(ar[i]>capacity)
+{ return false;}        }
+return true;
+    }
+}
