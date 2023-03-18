@@ -1,0 +1,22 @@
+class Solution {
+    public int maxSumRangeQuery(int[] nums, int[][] requests) {
+      Arrays.sort(nums);
+      int ar[]=new int[nums.length];
+      for(int i=0;i<requests.length;i++){
+          int s=requests[i][0];
+          int end=requests[i][1];
+          ar[s]++;
+         if(end<nums.length-1){ ar[end+1]--;}
+      }  
+      for(int i=1;i<ar.length;i++){
+          ar[i]=ar[i-1]+ar[i];
+      }
+    long sum=0;
+      Arrays.sort(ar);
+     
+      for(int i=0;i<nums.length;i++)
+      { sum= ((long)ar[i]*nums[i]+sum)%1000000007;}
+      return (int)sum;
+
+    }
+}
