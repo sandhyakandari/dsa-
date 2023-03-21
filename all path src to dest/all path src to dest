@@ -1,0 +1,29 @@
+class Solution {
+   public void dfs(int[][]graph,boolean vis[],int i,int tar,List<List<Integer>>ans,List<Integer>path){
+       if(i==tar){ 
+           //vis[tar]=true;
+          // List<Integer>an=new ArrayList<>();
+       //for(int j=0;j<=tar;j++){
+         //  if(vis[j]){an.add(j);
+        ans.add(new ArrayList<Integer> (path));
+        //vis[tar]=false;
+         return;
+   }
+
+   for(int nbr:graph[i]){
+            path.add(nbr);
+            dfs(graph,vis,nbr,tar,ans,path);
+       path.remove(path.size()-1);
+   }
+   }
+
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        List<List<Integer>>ans=new ArrayList<>();
+       boolean vis[]=new boolean[graph.length];
+       int n=graph.length-1;
+         List<Integer>path=new ArrayList<>();
+          path.add(0);
+        dfs(graph,vis,0,n,ans,path);
+        return ans;
+    }
+}
