@@ -1,0 +1,33 @@
+
+class Solution
+{public int ans=0;
+    public void dfs(boolean vis[],boolean path[],int s,int d,ArrayList<ArrayList<Integer>>gr){
+    
+     if(s==d)
+{ ans++;
+    return ;
+}
+path[s]=true;
+vis[s]=true;
+for(int nbr:gr.get(s)){
+      if(path[nbr] && vis[nbr]){continue;}
+        dfs(vis,path,nbr,d,gr);
+    }
+path[s]=false;
+    }
+    public int possible_paths(int[][] edges, int n, int s, int d)
+    {  ArrayList<ArrayList<Integer>>gr=new ArrayList<>();
+        // Code here 
+        if(s==d){return 1;}
+        for(int i=0;i<n;i++){ gr.add(new ArrayList<Integer>());}
+        for(int []r:edges){
+            gr.get(r[0]).add(r[1]);
+        }
+           // gr.get(edges[i][0]).add(edges[i][1]);
+         boolean path[]=new boolean[n];
+    boolean vis[]=new boolean[n];
+    dfs(vis,path,s,d,gr);
+    return ans;
+    }
+    
+}
