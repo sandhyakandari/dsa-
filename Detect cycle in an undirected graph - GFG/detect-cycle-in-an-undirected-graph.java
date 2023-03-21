@@ -39,18 +39,19 @@ class Solution {
         boolean vis[]=new boolean[V];
         for(int i=0;i<V;i++){
             if(vis[i]){ continue;}
-        Queue<Integer>q=new LinkedList<>();
-        q.add(i);
-        while(q.size()>0){
-            int cur=q.remove();
-            if(vis[cur]==true){ return true;}
-            vis[cur]=true;
-            for(int nbr:adj.get(cur)){
+             Queue<Integer>q=new LinkedList<>();
+            q.add(i);
+            while(q.size()>0){
+                int re=q.remove();
+                if(vis[re]){ return true;
+            }
+             vis[re]=true;
+            for(int nbr:adj.get(re)){
                 if(!vis[nbr]){
                     q.add(nbr);
                 }
             }
-        }}
-        return false;
+        }
     }
-}
+    return false;
+}}
