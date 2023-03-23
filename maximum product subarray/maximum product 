@@ -1,0 +1,12 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        int max=Integer.MIN_VALUE; int n=nums.length;
+                        for(int j=0;j<n;j++){
+                                int mul =1;
+                                for(int k=j;k<n;k++){
+                                        mul=mul*nums[k];
+                                        if(mul>max){
+                                                max=mul;
+                                        } } }
+                 return max;}
+}
