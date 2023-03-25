@@ -1,0 +1,70 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+   class Pair{
+       TreeNode node;
+       int state;
+       Pair(TreeNode node,int state){ this.node=node;
+       this.state=state;}
+
+   }
+    public int in(Stack<Pair>st){
+      while(st.size()>0){
+          Pair ne=st.peek();
+          if(ne.state==1){
+              ne.state++;
+              if(ne.node.left!=null) st.push(new Pair(ne.node.left,1));   }
+              else if(ne.state==2){
+                  ne.state++;
+                  if(ne.node.right!=null) st.push(new Pair(ne.node.right,1));
+                   return ne.node.val;
+              } 
+              else{ st.pop();}
+      }
+ return 0;    }
+     public int pre(Stack<Pair>str){
+      while(str.size()>0){
+          Pair ne=str.peek();
+          if(ne.state==1){
+              ne.state++;
+              if(ne.node.right!=null) str.push(new Pair(ne.node.right,1));   }
+              else if(ne.state==2){
+                  ne.state++;
+                  if(ne.node.left!=null) str.push(new Pair(ne.node.left,1));
+                   return ne.node.val;
+              } 
+              else{ str.pop();}
+      }
+    return 0;}
+    public boolean findTarget(TreeNode root, int k) {
+        Stack<Pair>st=new Stack<>();
+        st.push(new Pair(root,1));
+        Stack<Pair>str=new Stack<>();
+        str.push(new Pair(root,1));
+        int a=in(st);
+        int b=pre(str);
+        while(a<b){
+        if(a+b==k){
+            return true;
+        }
+        else if(a+b<k){
+            a=in(st);
+        }
+        else{ b=pre(str);}
+        
+    }
+    return false;
+}}
