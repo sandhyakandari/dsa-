@@ -1,0 +1,29 @@
+class Solution {
+    public void dfs(int i,int j,int [][]a){
+        if(i>=0 && j>=0 && i<a.length && j<a[i].length && a[i][j]==1){
+        a[i][j]=0;
+        dfs(i-1,j,a);
+        dfs(i+1,j,a);
+        dfs(i,j-1,a);
+        dfs(i,j+1,a);
+    }}
+    public int numEnclaves(int[][] grid) {
+        int n=grid.length;
+        int m=grid[0].length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(i==0 || j==0|| i==n-1|| j==m-1){
+                    dfs(i,j,grid);
+                }
+            }
+        }
+        int r=0;
+        for(int i=0;i<n;i++){
+             for(int j=0;j<m;j++){
+                 if(grid[i][j]==1){
+                     r++;
+                 }
+             }
+        }
+    return r;}
+}
