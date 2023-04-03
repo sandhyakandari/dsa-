@@ -33,23 +33,27 @@ class GFG {
 
 
 class Solution {
+    
+    public boolean dfs(int i,int p,boolean vis[],ArrayList<ArrayList<Integer>>adj){
+        vis[i]=true;
+        for(int nbr:adj.get(i)){
+            if(vis[nbr] && nbr!=p){ return true;
+        }
+        else if(vis[nbr]==false){
+            boolean an=dfs(nbr,i,vis,adj);
+            if(an){ return true;
+        }
+        }}
+        return false;
+    }
     // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         boolean vis[]=new boolean[V];
         for(int i=0;i<V;i++){
-            if(vis[i]){ continue;}
-             Queue<Integer>q=new LinkedList<>();
-            q.add(i);
-            while(q.size()>0){
-                int re=q.remove();
-                if(vis[re]){ return true;
-            }
-             vis[re]=true;
-            for(int nbr:adj.get(re)){
-                if(!vis[nbr]){
-                    q.add(nbr);
-                }
+            if(vis[i]==false){
+                boolean an=dfs(i,i,vis,adj);
+                if(an){ return true;
             }
         }
     }
