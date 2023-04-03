@@ -1,0 +1,23 @@
+class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {
+      int pre[]=new int[arr.length];
+        pre[0]=arr[0];
+        for(int i=1;i<arr.length;i++){
+            pre[i]=arr[i]^pre[i-1];
+        } int ar[]=new int[queries.length];
+        for(int i=0;i<queries.length;i++){
+            int sp=queries[i][0];
+            int en=queries[i][1];
+            if(sp==0){
+                ar[i]=pre[en];
+            }
+            else{
+                ar[i]=pre[en]^pre[sp-1];
+            }
+        }
+        return ar;
+
+
+
+    }
+}
