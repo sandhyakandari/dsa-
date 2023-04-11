@@ -34,23 +34,34 @@ class Solution {
             int a=(int)X.charAt(n)-48;
             int b=(int)Y.charAt(i)-48;
             int an=a+b+car;
-            if(an>=10){        int rem=an%10;        car=an/10;        s=rem+s;}
-            else{ s=an+s;
-            car=0;}
-        i--;    n--;     }         while(n>=0){     int a=(int)X.charAt(n)-48;     int an=a+car;
-         if(an>=10){    int rem=an%10; car=an/10;         s=rem+s;         }
-         else{ car=0;     s=an+s;     } n--;}
-     while(i>=0){     int a=(int)Y.charAt(i)-48;     int an=a+car;
-         if(an>=10){
-            int rem=an%10;
-             car=an/10;         s=rem+s;     }
-         else{ car=0;
-         s=an+s;     } i--;   }
-     if(car>0){ s=car+s;
-    } int k=0; String ans="";
+            if(an>=10){ int rem=an%10;       
+                         car=an/10;       
+                         s=rem+s;}
+            else{ s=an+s;   car=0;}
+              i--;n--;      }       
+        while(n>=0){     
+          int a=(int)X.charAt(n)-48;    
+          int an=a+car;
+             if(an>=10){  
+               int rem=an%10; 
+               car=an/10;        
+               s=rem+s;}
+              else{ car=0;  s=an+s;   }
+        n--;        }
+     while(i>=0){  
+         int a=(int)Y.charAt(i)-48;     
+         int an=a+car;
+            if(an>=10){
+               int rem=an%10;
+               car=an/10;        
+               s=rem+s; }
+         else{ car=0; s=an+s; }
+     i--;   }
+     if(car>0){ s=car+s;}
+     int k=0; String ans="";
         while(k<s.length()){
-            if(s.charAt(k)=='0'){     } else{ break;}   k++;    }
-            if(k==s.length()){ return "0";}
+            if(s.charAt(k)=='0'){     } else{ break;}   k++;}
+        if(k==s.length()){ return "0";}
         while(k<s.length()){
             ans=ans+s.charAt(k);
             k++;
