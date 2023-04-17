@@ -30,7 +30,29 @@ class GFG {
 // User function Template for Java
 
 class Solve {
-    int[] findTwoElement(int arr[], int n) {
+ int[] findTwoElement(int a[], int n) {
+        // 2nd approach 
+        int[] res = new int[2];
+     for(int i=0;i<n;i++){
+         if(a[Math.abs(a[i])-1]>0 ){
+             a[Math.abs(a[i])-1]=-a[Math.abs(a[i])-1];
+         }
+         else{
+             res[0]=Math.abs(a[i]);
+         }
+     }
+     for(int i=0;i<n;i++){
+         if(a[i]>0){
+             res[1]=i+1;
+         break;}
+     }
+     return res;
+     
+     
+     
+    }}
+ 
+   /* int[] findTwoElement(int arr[], int n) {
         // code here
        int fre[]=new int [n+1];
         for(int i=0;i<n;i++)
@@ -48,4 +70,4 @@ class Solve {
         }
         return ans;
     }
-}
+}*/
