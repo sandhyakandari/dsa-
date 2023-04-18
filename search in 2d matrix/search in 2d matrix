@@ -1,0 +1,35 @@
+class Solution {
+  public int find(int [][]m,int target){
+
+       int lo=0;int hi=m.length-1;
+    int c =m[0].length-1;
+    while(lo<=hi){
+        int mid=(lo+hi)/2;
+        if(m[mid][0]<=target && m[mid][c]>=target)
+   { return mid;}
+   else if(m[mid][0]>target){
+       hi=mid-1;
+   }
+   else{ lo=mid+1;}
+    }
+  return -1;}
+public boolean binary(int r,int[][]ma,int t){
+    int lo=0;int h=ma[0].length;
+    while(lo<=h){
+        int m=(lo+h)/2;
+        if(ma[r][m]==t){ return true;}
+        else if(ma[r][m]>t){ h=m-1;}
+        else{ lo=m+1;}
+    }
+    return false;
+}
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int r=find(matrix,target);
+        if(r==-1){
+            return false;
+        }
+        boolean isfound=binary(r,matrix,target);
+      return isfound;
+
+    }
+}
