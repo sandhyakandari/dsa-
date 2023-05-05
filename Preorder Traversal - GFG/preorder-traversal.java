@@ -121,25 +121,26 @@ class GfG {
 // }
 
 class BinaryTree
-{
-    
-    public static void pre(ArrayList<Integer>ans,Node root) {
-        if(root==null){ return;}
-        ans.add(root.data);
-        pre(ans,root.left);
-        pre(ans,root.right);
+{ static ArrayList<Integer> preo(Node root,ArrayList<Integer>ans)
+    {      if(root==null) return ans;
         
-        return;
+        ans.add(root.data);
+        preo(root.left,ans);
+        preo(root.right,ans);
+        return ans;
+        
+        // Code here
     }
 
+
+    
     //Function to return a list containing the preorder traversal of the tree.
     static ArrayList<Integer> preorder(Node root)
-    {
-        // Code here
-        ArrayList<Integer>ans=new ArrayList<>();
-        pre(ans,root);
-        return ans;        
+    {   ArrayList<Integer>ans=new ArrayList<>();
+          preo(root,ans);
+        return ans;
         
+        // Code here
     }
 
 }
